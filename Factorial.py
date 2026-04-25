@@ -1,9 +1,5 @@
-def Factorial():
-  hev=float(input("Enter the number you want to make a factorial of: \n"))
-  i=1
-  t=1
-  while i <= hev:
-    t*=i
-    i+=1
-  print("Factorial = ", t)
-Factorial()
+from megacalculator.core.calculations import factorial
+
+
+def Factorial(value: int) -> int:
+    return factorial(value)
