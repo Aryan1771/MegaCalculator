@@ -28,6 +28,7 @@ from megacalculator.core.converters import (
     convert_number_system,
     convert_temperature,
 )
+from megacalculator.resources import resource_path
 from megacalculator.services.currency import CurrencyError, CurrencyService
 
 ctk.set_appearance_mode("dark")
@@ -56,6 +57,7 @@ class MegaCalculatorApp(ctk.CTk):
         self.geometry("390x760")
         self.minsize(360, 680)
         self.maxsize(430, 820)
+        self._set_window_icon()
 
         self.expression = ""
         self.scientific_mode = tk.BooleanVar(value=True)
@@ -76,6 +78,11 @@ class MegaCalculatorApp(ctk.CTk):
         self._build_converter_panels()
         self._build_legacy_panel()
         self.show_panel("Calculator")
+
+    def _set_window_icon(self) -> None:
+        icon_path = resource_path("assets/megacalculator.ico")
+        if icon_path.exists():
+            self.iconbitmap(str(icon_path))
 
     def _build_header(self) -> None:
         header = ctk.CTkFrame(self, fg_color="#101114")

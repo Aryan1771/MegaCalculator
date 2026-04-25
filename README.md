@@ -35,9 +35,23 @@ python -m pytest
 python -m ruff check .
 ```
 
+## Build Windows EXE
+
+```powershell
+python -m pip install -e .[dev,build]
+python -m PyInstaller --clean MegaCalculator.spec
+```
+
+The compiled app is created at:
+
+```text
+dist/MegaCalculator.exe
+```
+
 ## Project Structure
 
 ```text
+assets/       App icon source, PNG, and Windows ICO files
 src/megacalculator/
   core/       Pure calculator, converter, and geometry functions
   services/   Live currency service and local rate cache

@@ -19,6 +19,10 @@ dev = [
     "pytest>=8.0",
     "ruff>=0.8",
 ]
+build = [
+    "pyinstaller>=6.16",
+    "pillow>=11.0",
+]
 
 [project.scripts]
 megacalculator = "megacalculator.__main__:main"
