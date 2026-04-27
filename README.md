@@ -1,24 +1,53 @@
 # MegaCalculator
 
-MegaCalculator is a modern Python desktop calculator app with a phone-style UI.
-It started as a learning project made from menu-driven calculator scripts and is
-now structured like a professional Python package.
+MegaCalculator is a modern Python desktop calculator built with CustomTkinter. It combines a phone-style scientific calculator, unit converters, currency conversion, legacy math tools, automated tests, and a Windows executable build configuration.
 
 ## Features
 
 - Normal and scientific calculator modes
-- Smooth phone-sized desktop window built with CustomTkinter
-- Panel switcher for currency, length, weight, BMI, area, temperature, speed,
-  volume, pressure, and number-system converters
-- Live currency conversion using the free Frankfurter API, with cached fallback
-- Refactored legacy tools: factorial, Fibonacci, primes, pi, Euler's number,
-  binomial calculation, digit writer, and geometry helpers
-- Tested pure calculation logic
+- Phone-sized desktop UI built with CustomTkinter
+- Currency, length, weight, BMI, area, temperature, speed, volume, pressure, and number-system converters
+- Live currency conversion through the Frankfurter API
+- Cached currency fallback for offline or failed API requests
+- Legacy tools for factorials, Fibonacci numbers, primes, pi, Euler's number, binomial expansion, digit writing, and geometry helpers
+- Reusable package layout under `src/`
+- Test suite for calculation, conversion, currency, geometry, and UI smoke behavior
+- Ruff linting configuration
+- PyInstaller spec for building a Windows executable
 
-## Run
+## Tech Stack
+
+- Python 3.13+
+- CustomTkinter
+- pytest
+- ruff
+- PyInstaller
+
+## Project Structure
+
+```text
+assets/                         Application icons
+src/megacalculator/
+  core/                         Pure calculation, converter, and geometry logic
+  services/                     Currency service and rate cache
+  ui/                           CustomTkinter desktop interface
+tests/                          Automated tests
+main.py                         Compatibility launcher
+MegaCalculator.spec             Windows executable build config
+pyproject.toml                  Package, dependency, test, and lint configuration
+```
+
+## Getting Started
+
+### Install in development mode
 
 ```powershell
 python -m pip install -e .[dev]
+```
+
+### Run the app
+
+```powershell
 python -m megacalculator
 ```
 
@@ -28,37 +57,40 @@ You can also run the compatibility launcher:
 python main.py
 ```
 
-## Test
+## Testing and Linting
+
+Run the test suite:
 
 ```powershell
 python -m pytest
+```
+
+Run lint checks:
+
+```powershell
 python -m ruff check .
 ```
 
-## Build Windows EXE
+## Build a Windows Executable
+
+Install build dependencies:
 
 ```powershell
 python -m pip install -e .[dev,build]
+```
+
+Build with PyInstaller:
+
+```powershell
 python -m PyInstaller --clean MegaCalculator.spec
 ```
 
-The compiled app is created at:
+The executable is created at:
 
 ```text
 dist/MegaCalculator.exe
 ```
 
-## Project Structure
-
-```text
-assets/       App icon source, PNG, and Windows ICO files
-src/megacalculator/
-  core/       Pure calculator, converter, and geometry functions
-  services/   Live currency service and local rate cache
-  ui/         CustomTkinter desktop app
-tests/        Automated tests for the reusable logic
-```
-
 ## License
 
-GPL-3.0-or-later
+This repository is licensed under the GPL-3.0 license. See `LICENSE` for details.
