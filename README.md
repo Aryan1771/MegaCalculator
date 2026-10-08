@@ -1,6 +1,6 @@
 # MegaCalculator
 
-MegaCalculator is a modern Python desktop calculator built with CustomTkinter. It combines a phone-style scientific calculator, unit converters, currency conversion, legacy math tools, automated tests, and a Windows executable build configuration.
+MegaCalculator is a Python desktop calculator built with CustomTkinter. It combines a phone-style scientific calculator, unit converters, currency conversion, legacy math tools, automated tests, and a Windows executable build configuration.
 
 ## Features
 
@@ -39,10 +39,12 @@ pyproject.toml                  Package, dependency, test, and lint configuratio
 
 ## Getting Started
 
+Python 3.13+ and a working Tk installation are required. Run `python -m tkinter` to check Tk availability. Create and activate a virtual environment before installing dependencies.
+
 ### Install in development mode
 
 ```powershell
-python -m pip install -e .[dev]
+python -m pip install -e ".[dev]"
 ```
 
 ### Run the app
@@ -76,7 +78,7 @@ python -m ruff check .
 Install build dependencies:
 
 ```powershell
-python -m pip install -e .[dev,build]
+python -m pip install -e ".[dev,build]"
 ```
 
 Build with PyInstaller:
@@ -90,6 +92,10 @@ The executable is created at:
 ```text
 dist/MegaCalculator.exe
 ```
+
+## Currency data
+
+Currency conversion depends on provider availability. Cached rates may be older than the latest published rates; inspect the rate date before relying on a conversion.
 
 ## License
 
